@@ -8,6 +8,7 @@ use App\DesingPatterns\Behaivioral\Strategy\ShoppingCard;
 use App\DesingPatterns\Behaivioral\Strategy\SilverDiscountStrategy;
 use App\DesingPatterns\Creational\FactoryMethod\EmailNotification;
 use App\DesingPatterns\Creational\FactoryMethod\EmailNotificationFactory;
+use App\DesingPatterns\Creational\Singleton\LoggerService;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -20,7 +21,7 @@ class ClientController extends Controller
     }
 
 
-    public function useStrategy()
+    public function useStrategy(): void
     {
         $item1 = new Item('item1', 1000);
         $item2 = new Item('item2', 1000);
@@ -41,5 +42,15 @@ class ClientController extends Controller
         $totalAmount = $shoppingCard->calculateTotalAmount();
 
         echo 'this is Gold discount amount: ' . $totalAmount;
+    }
+
+    public function useSingleton()
+    {
+        $logger = LoggerService::getInstance();
+
+        // Log a message
+        $logger->log('Nasrin is testing this part.');
+
+        return response()->json(['message' => 'Action logged successfully']);
     }
 }

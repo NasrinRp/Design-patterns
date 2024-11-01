@@ -9,6 +9,7 @@ use App\DesingPatterns\Behaivioral\Strategy\SilverDiscountStrategy;
 use App\DesingPatterns\Creational\FactoryMethod\EmailNotification;
 use App\DesingPatterns\Creational\FactoryMethod\EmailNotificationFactory;
 use App\DesingPatterns\Creational\Singleton\LoggerService;
+use App\DesingPatterns\Structrual\Facade\ShoppingFacade;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -42,6 +43,20 @@ class ClientController extends Controller
         $totalAmount = $shoppingCard->calculateTotalAmount();
 
         echo 'this is Gold discount amount: ' . $totalAmount;
+    }
+
+    public function useFacade()
+    {
+        $cartItems = [
+            ['id' => 1, 'name' => 'Product 1', 'price' => 100, 'quantity' => 2],
+            ['id' => 2, 'name' => 'Product 2', 'price' => 50, 'quantity' => 1],
+        ];
+        $discountCode = 'SUMMER21';
+
+        $shopping = new ShoppingFacade();
+        $result = $shopping->checkout($cartItems, $discountCode);
+
+        return response()->json(['message' => $result]);
     }
 
     public function useSingleton()

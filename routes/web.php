@@ -10,3 +10,4 @@ Route::get('/', function () {
 Route::get('/factory-method', [ClientController::class, 'useFactoryMethod'])->name('factory-method');
 Route::get('/strategy', [ClientController::class, 'useStrategy'])->name('strategy');
 Route::get('/singleton', [ClientController::class, 'useSingleton'])->name('singleton');
+Route::get('/facade', [ClientController::class, 'useFacade'])->name('facade');

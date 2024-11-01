@@ -6,11 +6,9 @@ use App\DesingPatterns\Behaivioral\Strategy\GoldDiscountStrategy;
 use App\DesingPatterns\Behaivioral\Strategy\Item;
 use App\DesingPatterns\Behaivioral\Strategy\ShoppingCard;
 use App\DesingPatterns\Behaivioral\Strategy\SilverDiscountStrategy;
-use App\DesingPatterns\Creational\FactoryMethod\EmailNotification;
 use App\DesingPatterns\Creational\FactoryMethod\EmailNotificationFactory;
 use App\DesingPatterns\Creational\Singleton\LoggerService;
 use App\DesingPatterns\Structrual\Facade\ShoppingFacade;
-use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -58,6 +56,24 @@ class ClientController extends Controller
 
         return response()->json(['message' => $result]);
     }
+
+
+    //todo: fix it
+//    public function useFacadeAsService()
+//    {
+//        $cartItems = [
+//            ['id' => 1, 'name' => 'Product 1', 'price' => 100, 'quantity' => 2],
+//            ['id' => 2, 'name' => 'Product 2', 'price' => 50, 'quantity' => 1],
+//        ];
+//        $discountCode = 'SUMMER21';
+//
+//        // for converting shopping facade as a service do these steps:
+//        // 1.create shopping service in service provider files
+//        // 2.add service provider name in providers file in config/app.php
+//        // 3. add facade name in alias array
+//        $result = Shopping::checkout($cartItems, $discountCode);
+//        return response()->json(['message' => $result]);
+//    }
 
     public function useSingleton()
     {

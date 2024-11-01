@@ -1,5 +1,7 @@
 <?php
 
+use App\DesingPatterns\Structrual\Facade\ShoppingFacade;
+
 return [
 
     /*
@@ -123,4 +125,12 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'providers' => [
+        App\Providers\ShoppingServiceProvider::class,
+    ],
+
+    'aliases' => [
+        // Other Facades
+        'Shopping' => ShoppingFacade::class,
+    ],
 ];
